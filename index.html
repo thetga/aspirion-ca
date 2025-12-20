@@ -55,8 +55,9 @@
 $(function () {
   $.getJSON("/feed/editorials.json", function (data) {
     let html = "";
+    let maxItems = 10;
 
-    data.slice(0, 10).forEach(item => {
+    data.slice(0, maxItems).forEach(item => {
       html += `
         <a href="${item.url}" class="list-group-item list-group-item-action">
           <h5 class="mb-1">${item.title}</h5>
@@ -66,12 +67,19 @@ $(function () {
       `;
     });
 
+    html += `
+      <div class="text-center mt-3">
+        <a href="/editorials/month.html" class="btn btn-outline-primary">
+          View More
+        </a>
+      </div>
+    `;
+
     $("#editorial-list").html(html);
-  }).fail(function () {
-    $("#editorial-list").html("<div class='text-danger'>Failed to load editorials.</div>");
   });
 });
 </script>
+
 
 </body>
 </html>
