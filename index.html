@@ -64,21 +64,42 @@ body{
 .sidebar h5{
   font-family:Merriweather,serif;
   font-weight:700;
-  margin-bottom:1.2rem;
+  margin-bottom:1.4rem;
 }
+
 .sidebar ul{
   list-style:none;
   padding:0;
+  margin:0;
 }
+
 .sidebar li{
-  margin-bottom:.8rem;
+  padding-bottom:.9rem;
+  margin-bottom:.9rem;
+  border-bottom:1px solid var(--border);
 }
+
+.sidebar li:last-child{
+  border-bottom:none;
+  margin-bottom:0;
+}
+
 .sidebar a{
-  color:#334155;
+  display:block;
+  color:#1f2933;
   text-decoration:none;
+  font-size:.95rem;
+  line-height:1.4;
 }
 .sidebar a:hover{
   color:var(--accent);
+}
+
+.sidebar .post-time{
+  display:block;
+  font-size:.75rem;
+  color:var(--muted);
+  margin-top:.25rem;
 }
 
 /* ---------- FOOTER ---------- */
@@ -112,10 +133,10 @@ footer{
 <div class="container">
   <div class="row g-4">
 
-    <!-- EMPTY CONTENT AREA (worker will inject) -->
+    <!-- EMPTY CONTENT AREA -->
     <div class="col-lg-8">
       <div class="main-placeholder">
-        <!-- Content generated at runtime by Worker -->
+        <!-- Runtime content injected by Worker -->
       </div>
     </div>
 
@@ -149,7 +170,7 @@ loadPartial("header", "/header.html");
 loadPartial("footer", "/footer.html");
 </script>
 
-<!-- ---------- LOAD LATEST POSTS ---------- -->
+<!-- ---------- LOAD LATEST POSTS WITH TIME ---------- -->
 <script>
 fetch('/latest.json')
   .then(res => res.json())
@@ -159,7 +180,12 @@ fetch('/latest.json')
 
     data.slice(0, 5).forEach(item => {
       const li = document.createElement('li');
-      li.innerHTML = `<a href="${item.url}">${item.title}</a>`;
+
+      li.innerHTML = `
+        <a href="${item.url}">${item.title}</a>
+        <span class="post-time">${item.time}</span>
+      `;
+
       list.appendChild(li);
     });
   })
