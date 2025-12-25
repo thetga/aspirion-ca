@@ -1,116 +1,42 @@
 [
   {
-    "title": "SHANTI Bill: Navigating Turbulence in India's Nuclear Energy Future",
-    "url": "/editorials/2025/01/will-shanti-create-turbulence.html",
-    "date": "2025-01-10",
-    "category": "governance"
-  },
-  {
     "title": "Of pilots and other drivers",
     "url": "/editorials/2025/12/of-pilots-and-other-drivers.html",
     "date": "2025-12-22",
-    "source": "the-hindu"
+    "source": "The Hindu",
+    "type": "News",
+    "categories": ["Governance", "Polity"]
   },
   {
-    "title": "FDI relaxations alone will not attract insurance players",
-    "url": "/editorials/2025/12/fdi-relaxations-alone-will-not-attract-insurance-players.html",
+    "title": "When fiscal prudence meets political reality",
+    "url": "/editorials/2025/12/fiscal-prudence-political-reality.html",
     "date": "2025-12-21",
-    "source": "the-hindu"
+    "source": "Indian Express",
+    "type": "Editorial",
+    "categories": ["Economy"]
   },
   {
-    "title": "Flattering to deceive",
-    "url": "/editorials/2025/12/flattering-to-deceive.html",
+    "title": "Judicial accountability and public trust",
+    "url": "/editorials/2025/12/judicial-accountability-public-trust.html",
+    "date": "2025-12-20",
+    "source": "The Hindu",
+    "type": "Editorial",
+    "categories": ["Polity", "Governance"]
+  },
+  {
+    "title": "India–Africa ties gain strategic depth",
+    "url": "/news/2025/12/india-africa-strategic-depth.html",
     "date": "2025-12-19",
-    "source": "the-hindu"
+    "source": "PIB",
+    "type": "News",
+    "categories": ["IR"]
   },
   {
-    "title": "Flattering to deceive",
-    "url": "/editorials/2025/12/flattering-to-deceive.html",
-    "date": "2025-12-19",
-    "source": "the-hindu"
-  },
-  {
-    "title": "FDI relaxations alone will not attract insurance players",
-    "url": "/editorials/2025/12/fdi-relaxations-alone-will-not-attract-insurance-players.html",
-    "date": "2025-12-21",
-    "source": "the-hindu"
-  },
-  {
-    "title": "FDI relaxations alone will not attract insurance players",
-    "url": "/editorials/2025/12/fdi-relaxations-alone-will-not-attract-insurance-players.html",
-    "date": "2025-12-21",
-    "source": "the-hindu"
-  },
-  {
-    "title": "Flattering to deceive",
-    "url": "/editorials/2025/12/flattering-to-deceive.html",
-    "date": "2025-12-19",
-    "source": "the-hindu"
-  },
-  {
-    "title": "Flattering to deceive",
-    "url": "/editorials/2025/12/flattering-to-deceive.html",
-    "date": "2025-12-19",
-    "source": "the-hindu"
-  },
-  {
-    "title": "Flattering to deceive",
-    "url": "/editorials/2025/12/flattering-to-deceive.html",
-    "date": "2025-12-19",
-    "source": "the-hindu"
-  },
-  {
-    "title": "FDI relaxations alone will not attract insurance players",
-    "url": "/editorials/2025/12/fdi-relaxations-alone-will-not-attract-insurance-players.html",
-    "date": "2025-12-21",
-    "source": "the-hindu"
-  },
-  {
-    "title": "FDI relaxations alone will not attract insurance players",
-    "url": "/editorials/2025/12/fdi-relaxations-alone-will-not-attract-insurance-players.html",
-    "date": "2025-12-21",
-    "source": "the-hindu"
-  },
-  {
-    "title": "Flattering to deceive",
-    "url": "/editorials/2025/12/flattering-to-deceive.html",
-    "date": "2025-12-19",
-    "source": "the-hindu"
-  },
-  {
-    "title": "Flattering to deceive",
-    "url": "/editorials/2025/12/flattering-to-deceive.html",
-    "date": "2025-12-19",
-    "source": "the-hindu"
-  },
-  {
-    "title": "FDI relaxations alone will not attract insurance players",
-    "url": "/editorials/2025/12/fdi-relaxations-alone-will-not-attract-insurance-players.html",
-    "date": "2025-12-21",
-    "source": "the-hindu"
-  },
-  {
-    "title": "Flattering to deceive",
-    "url": "/editorials/2025/12/flattering-to-deceive.html",
-    "date": "2025-12-19",
-    "source": "the-hindu"
-  },
-  {
-    "title": "Flattering to deceive",
-    "url": "/editorials/2025/12/flattering-to-deceive.html",
-    "date": "2025-12-19",
-    "source": "the-hindu"
-  },
-  {
-    "title": "FDI relaxations alone will not attract insurance players",
-    "url": "/editorials/2025/12/fdi-relaxations-alone-will-not-attract-insurance-players.html",
-    "date": "2025-12-21",
-    "source": "the-hindu"
-  },
-  {
-    "title": "FDI relaxations alone will not attract insurance players",
-    "url": "/editorials/2025/12/fdi-relaxations-alone-will-not-attract-insurance-players.html",
-    "date": "2025-12-21",
-    "source": "the-hindu"
+    "title": "Climate finance and the Global South",
+    "url": "/editorials/2025/12/climate-finance-global-south.html",
+    "date": "2025-12-18",
+    "source": "The Hindu",
+    "type": "Editorial",
+    "categories": ["Environment"]
   }
 ]
