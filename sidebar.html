@@ -1,37 +1,33 @@
 <aside class="sidebar">
   <h5>Latest Posts</h5>
-  <ul id="latest-posts">
+  <ul class="latest-list">
     <li class="text-muted">Loading…</li>
   </ul>
 </aside>
 
 <script>
 (function () {
-  function formatDate(d) {
-    return new Date(d).toLocaleDateString("en-IN", {
-      day: "2-digit",
-      month: "short",
-      year: "numeric"
-    });
+  function fmt(d){
+    return new Date(d).toLocaleDateString("en-IN",{day:"2-digit",month:"short"});
   }
 
   fetch("/latest.json")
-    .then(r => r.json())
-    .then(data => {
-      const ul = document.getElementById("latest-posts");
-      ul.innerHTML = "";
-      data.slice(0, 5).forEach(i => {
-        ul.innerHTML += `
+    .then(r=>r.json())
+    .then(data=>{
+      const ul=document.querySelector(".latest-list");
+      ul.innerHTML="";
+      data.slice(0,5).forEach(i=>{
+        ul.innerHTML+=`
           <li>
-            <a href="${i.url}">${i.title}</a>
-            <span class="post-time">
-              ${formatDate(i.date)} · ${i.source} · ${i.type}
+            <a class="latest-link" href="${i.url}">${i.title}</a>
+            <span class="latest-meta">
+              ${fmt(i.date)} · ${i.source} · ${i.type}
             </span>
           </li>`;
       });
     })
-    .catch(() => {
-      document.getElementById("latest-posts").innerHTML =
+    .catch(()=>{
+      document.querySelector(".latest-list").innerHTML=
         "<li class='text-muted'>Unable to load</li>";
     });
 })();
