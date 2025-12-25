@@ -20,7 +20,6 @@
   --border:#e5e7eb;
 }
 
-/* ---------- BASE ---------- */
 body{
   background:var(--bg);
   color:var(--ink);
@@ -28,7 +27,7 @@ body{
   padding-top:72px;
 }
 
-/* ---------- HERO ---------- */
+/* HERO */
 .hero{
   padding:4rem 0 3rem;
   background:linear-gradient(180deg,#ffffff 0%,#f2f4f7 100%);
@@ -43,7 +42,7 @@ body{
   font-size:1.05rem;
 }
 
-/* ---------- MAIN PLACEHOLDER ---------- */
+/* MAIN PLACEHOLDER */
 .main-placeholder{
   background:var(--paper);
   border:1px solid var(--border);
@@ -52,7 +51,7 @@ body{
   min-height:300px;
 }
 
-/* ---------- SIDEBAR ---------- */
+/* SIDEBAR (shared styles) */
 .sidebar{
   background:var(--paper);
   border:1px solid var(--border);
@@ -66,24 +65,20 @@ body{
   font-weight:700;
   margin-bottom:1.4rem;
 }
-
 .sidebar ul{
   list-style:none;
   padding:0;
   margin:0;
 }
-
 .sidebar li{
   padding-bottom:.9rem;
   margin-bottom:.9rem;
   border-bottom:1px solid var(--border);
 }
-
 .sidebar li:last-child{
   border-bottom:none;
   margin-bottom:0;
 }
-
 .sidebar a{
   display:block;
   color:#1f2933;
@@ -94,7 +89,6 @@ body{
 .sidebar a:hover{
   color:var(--accent);
 }
-
 .sidebar .post-time{
   display:block;
   font-size:.75rem;
@@ -102,7 +96,7 @@ body{
   margin-top:.25rem;
 }
 
-/* ---------- FOOTER ---------- */
+/* FOOTER */
 footer{
   background:#0f172a;
   color:#94a3b8;
@@ -142,12 +136,7 @@ footer{
 
     <!-- SIDEBAR -->
     <div class="col-lg-4">
-      <aside class="sidebar">
-        <h5>Latest Posts</h5>
-        <ul id="latest-posts">
-          <li class="text-muted">Loading…</li>
-        </ul>
-      </aside>
+      <div id="sidebar"></div>
     </div>
 
   </div>
@@ -156,7 +145,7 @@ footer{
 <!-- FOOTER -->
 <div id="footer"></div>
 
-<!-- ---------- LOAD PARTIALS ---------- -->
+<!-- LOAD PARTIALS -->
 <script>
 function loadPartial(id, url) {
   fetch(url)
@@ -167,45 +156,9 @@ function loadPartial(id, url) {
 }
 
 loadPartial("header", "/header.html");
+loadPartial("sidebar", "/sidebar.html");
 loadPartial("footer", "/footer.html");
 </script>
-
-<!-- ---------- LOAD LATEST POSTS WITH TIME ---------- -->
-<script>
-function formatDate(isoDate) {
-  const d = new Date(isoDate);
-  return d.toLocaleDateString("en-IN", {
-    day: "2-digit",
-    month: "short",
-    year: "numeric"
-  });
-}
-
-fetch('/latest.json')
-  .then(res => res.json())
-  .then(data => {
-    const list = document.getElementById('latest-posts');
-    list.innerHTML = '';
-
-    data.slice(0, 5).forEach(item => {
-      const li = document.createElement('li');
-
-      li.innerHTML = `
-        <a href="${item.url}">${item.title}</a>
-        <span class="post-time">
-          ${formatDate(item.date)} · ${item.source} · ${item.type}
-        </span>
-      `;
-
-      list.appendChild(li);
-    });
-  })
-  .catch(() => {
-    document.getElementById('latest-posts').innerHTML =
-      '<li class="text-muted">Unable to load</li>';
-  });
-</script>
-
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
