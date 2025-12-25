@@ -7,41 +7,32 @@
 
 <script>
 (function () {
-  function formatDate(isoDate) {
-    const d = new Date(isoDate);
-    return d.toLocaleDateString("en-IN", {
+  function formatDate(d) {
+    return new Date(d).toLocaleDateString("en-IN", {
       day: "2-digit",
       month: "short",
       year: "numeric"
     });
   }
 
-  fetch('/latest.json')
-    .then(res => res.json())
+  fetch("/latest.json")
+    .then(r => r.json())
     .then(data => {
-      const list = document.getElementById('latest-posts');
-      if (!list) return;
-
-      list.innerHTML = '';
-
-      data.slice(0, 5).forEach(item => {
-        const li = document.createElement('li');
-
-        li.innerHTML = `
-          <a href="${item.url}">${item.title}</a>
-          <span class="post-time">
-            ${formatDate(item.date)} · ${item.source} · ${item.type}
-          </span>
-        `;
-
-        list.appendChild(li);
+      const ul = document.getElementById("latest-posts");
+      ul.innerHTML = "";
+      data.slice(0, 5).forEach(i => {
+        ul.innerHTML += `
+          <li>
+            <a href="${i.url}">${i.title}</a>
+            <span class="post-time">
+              ${formatDate(i.date)} · ${i.source} · ${i.type}
+            </span>
+          </li>`;
       });
     })
     .catch(() => {
-      const list = document.getElementById('latest-posts');
-      if (list) {
-        list.innerHTML = '<li class="text-muted">Unable to load</li>';
-      }
+      document.getElementById("latest-posts").innerHTML =
+        "<li class='text-muted'>Unable to load</li>";
     });
 })();
 </script>
