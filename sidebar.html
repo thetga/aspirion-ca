@@ -1,34 +1,41 @@
-<aside class="sidebar">
-  <h5>Latest Posts</h5>
-  <ul class="latest-list">
-    <li class="text-muted">Loading…</li>
-  </ul>
+<aside class="ed-sidebar">
+  <h4 class="ed-sidebar-title">Latest</h4>
+
+  <div class="ed-sidebar-items">
+    <div class="ed-sidebar-item">Loading…</div>
+  </div>
 </aside>
 
 <script>
 (function () {
   function fmt(d){
-    return new Date(d).toLocaleDateString("en-IN",{day:"2-digit",month:"short"});
+    return new Date(d).toLocaleDateString("en-IN", {
+      day:"2-digit", month:"short"
+    });
   }
 
   fetch("/latest.json")
-    .then(r=>r.json())
-    .then(data=>{
-      const ul=document.querySelector(".latest-list");
-      ul.innerHTML="";
-      data.slice(0,5).forEach(i=>{
-        ul.innerHTML+=`
-          <li>
-            <a class="latest-link" href="${i.url}">${i.title}</a>
-            <span class="latest-meta">
-              ${fmt(i.date)} · ${i.source} · ${i.type}
-            </span>
-          </li>`;
+    .then(r => r.json())
+    .then(data => {
+      const box = document.querySelector(".ed-sidebar-items");
+      box.innerHTML = "";
+
+      data.slice(0,5).forEach(i => {
+        box.innerHTML += `
+          <div class="ed-sidebar-item">
+            <a href="${i.url}" class="ed-sidebar-link">
+              ${i.title}
+            </a>
+            <div class="ed-sidebar-meta">
+              ${fmt(i.date)} · ${i.source}
+            </div>
+          </div>
+        `;
       });
     })
     .catch(()=>{
-      document.querySelector(".latest-list").innerHTML=
-        "<li class='text-muted'>Unable to load</li>";
+      document.querySelector(".ed-sidebar-items").innerHTML =
+        "<div class='ed-sidebar-item muted'>Unavailable</div>";
     });
 })();
 </script>
