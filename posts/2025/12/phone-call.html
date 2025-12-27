@@ -137,51 +137,95 @@ article p{
 
     <div class="col-lg-4">
       <style>
-.sidebar{
-  background:#ffffff;
-  border:1px solid #e5e7eb;
+  /* SIDEBAR — INDEPENDENT SYSTEM */
+.ed-sidebar{
+  background:var(--paper);
+  border:1px solid var(--border);
   border-radius:14px;
+  padding:1.8rem;
 }
-.sidebar h6{
-  font-weight:600;
-  border-bottom:1px solid #e5e7eb;
-  padding-bottom:.5rem;
+
+.ed-sidebar-title{
+  font-family:Merriweather,serif;
+  font-size:1.15rem;
+  margin-bottom:1.4rem;
 }
-.sidebar a{
-  color:#334155;
+
+.ed-sidebar-items{
+  display:flex;
+  flex-direction:column;
+  gap:1.2rem;
+}
+
+.ed-sidebar-item{
+  padding-bottom:1.2rem;
+  border-bottom:1px solid var(--border);
+}
+
+.ed-sidebar-item:last-child{
+  border-bottom:none;
+  padding-bottom:0;
+}
+
+.ed-sidebar-link{
+  display:block;
+  font-size:.95rem;
+  line-height:1.45;
+  color:var(--ink);
   text-decoration:none;
 }
-.sidebar a:hover{ color:#2563eb; }
-</style>
 
-<aside class="sidebar card shadow-sm sticky-top" style="top:90px">
-  <div class="card-body">
-    <h6>Recent Editorials</h6>
-    <ul class="list-unstyled small mt-3" id="recent-editorials">
-      <li class="text-muted">Loading…</li>
-    </ul>
+.ed-sidebar-link:hover{
+  color:var(--accent);
+}
+
+.ed-sidebar-meta{
+  font-size:.75rem;
+  color:var(--muted);
+  margin-top:.35rem;
+}
+
+</style>
+<aside class="ed-sidebar">
+  <h4 class="ed-sidebar-title">Latest</h4>
+
+  <div class="ed-sidebar-items">
+    <div class="ed-sidebar-item">Loading…</div>
   </div>
 </aside>
-
 <script>
-fetch("/latest.json")
-  .then(r => r.json())
-  .then(data => {
-    const ul = document.getElementById("recent-editorials")
-    if(!ul) return
-    ul.innerHTML = ""
-    data.slice(0,5).forEach(e=>{
-      ul.innerHTML += `<li class="mb-2">
-        <a href="${e.url}">${e.title}</a>
-      </li>`
-    })
-  })
-  .catch(()=>{
-    document.getElementById("recent-editorials").innerHTML =
-      "<li class='text-muted'>Unable to load</li>"
-  })
-</script>
+(function () {
+  function fmt(d){
+    return new Date(d).toLocaleDateString("en-IN", {
+      day:"2-digit", month:"short"
+    });
+  }
 
+  fetch("/latest.json")
+    .then(r => r.json())
+    .then(data => {
+      const box = document.querySelector(".ed-sidebar-items");
+      box.innerHTML = "";
+
+      data.slice(0,5).forEach(i => {
+        box.innerHTML += `
+          <div class="ed-sidebar-item">
+            <a href="${i.url}" class="ed-sidebar-link">
+              ${i.title}
+            </a>
+            <div class="ed-sidebar-meta">
+              ${fmt(i.date)} · ${i.source}
+            </div>
+          </div>
+        `;
+      });
+    })
+    .catch(()=>{
+      document.querySelector(".ed-sidebar-items").innerHTML =
+        "<div class='ed-sidebar-item muted'>Unavailable</div>";
+    });
+})();
+</script>
     </div>
 
   </div>
